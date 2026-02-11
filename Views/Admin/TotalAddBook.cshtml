@@ -1,0 +1,101 @@
+﻿@model System.Data.DataTable
+
+@{
+    Layout = "_layout";
+}
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title text-center fs-4" id="exampleModalLabel">Add Book</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" asp-action="Addbook">
+                                <label for="" class="fs-5 my-1 fw-bold text-dark">Enter Unique ID:</label>
+                                <input type="text" name="bookid" class="form-control" placeholder="Enter Unique Book ID" id="" required>
+                                <label for="" class="fs-5 my-1 fw-bold text-dark">Title:</label>
+                                <input type="text" name="bookname" class="form-control" placeholder="Enter Book Title" id="" required>
+                                <label for="" class="fs-5 my-1 fw-bold text-dark">Author:</label>
+                                <input type="text" name="author" class="form-control" placeholder="Enter Author Name" id="" required>
+                                <label for="" class="fs-5 my-1 fw-bold text-dark">Number of copies:</label>
+                                <input type="number" name="copy" class="form-control" placeholder="Enter Number of Copies" id="" required>
+                                <label for="" class="fs-5 my-1 fw-bold text-dark">Available:</label>
+                                <input type="number" name="available" class="form-control" placeholder="Enter Available Copies" id="" required>
+                                <br>
+                                <button type="submit" class="form-control btn btn-primary">Add Book</button>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- </div> -->
+            
+            <p class="text-center my-2">@TempData["bookadd"]</p>
+
+
+
+                <!-- book list start -->
+                <div class="w-100 mb-5 px-4 d-flex gap-5 justify-content-evenly flex-wrap">
+                    <div class=" p-3 p-0 m-0 rounded-4 bg-white shadow-xl shadow-gray-700 d-flex flex-wrap flex-column w-100" style=" background-color: rgb(76, 76, 83);">
+                        <div class="d-flex w-100 align-items-center justify-content-between">
+                            <h1 class="fs-1"><i class="fa-solid fa-file"></i>Total books</h1>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Add Book
+                            </button>
+                        </div>
+                        <div class="w-100 tabl">
+                            <table class="bordered my-2 w-100">
+                                <tr class="bg-danger text-black bg-opacity-25" style="border: 2px solid rgb(111, 108, 108);">
+                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Sr. No.</th>
+                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Book ID</th>
+                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Title</th>
+                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Author</th>
+                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Number of Copy</th>
+                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Available</th>
+                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Action</th>
+                                </tr>
+                                
+                @foreach(System.Data.DataRow row in Model.Rows)
+                {
+                    <tr class="text-black bg-opacity-25 hover:bg-red-200" >
+                        <td class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">@row["id"]</td>
+                        <td class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">@row["bookID"]</td>
+                        <td class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">@row["title"]</td>
+                        <td class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">@row["author"]</td>
+                        <td class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">@row["copies"]</td>
+                        <td class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">@row["available"]</td>
+                        <td class="text-center p-2 d-flex flex-wrap align-items-center justify-content-center gap-1" style="border: 1px solid rgb(111, 108, 108);">
+                            @* <a class="btn btn-primary" asp-route-id="@row["id"]" onclick="return confirm('Do You want to Make Changes in this book ?')">Edit</a> *@
+                            <a asp-action="DeleteBook" class="btn btn-danger" asp-route-id="@row["id"]" onclick="return confirm('Do You really want to delete this book ?')">Delete</a>
+                        </td>
+          
+                    </tr>
+                }
+
+                                
+                                
+                                
+                                
+                                
+                            </table>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- main page close -->
+   
+
+
+

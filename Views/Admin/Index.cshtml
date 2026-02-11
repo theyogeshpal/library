@@ -1,0 +1,180 @@
+﻿@model LibraryManagementSystem.Models.DashboardModel
+
+@{
+    Layout = "_Layout";
+}
+
+
+                <div>
+
+                    <h1 class="fw-bold fs-1">Hello, <span class="text-success">Yogesh!</span></h1>
+                    <p class="fw-bold">September 5, 2025 | Friday, 21:37 PM</p>
+                </div>
+
+                <!-- boxes open -->
+                <div class="boxes d-flex justify-content-evenly row-gap-5 flex-wrap my-5">
+
+                    <div class="d-flex flex-column p-3  rounded-4 shadow-lg border-1 border-secondary box " style="width: 42vmin;background-color: rgb(255, 255, 255);">
+                        <a asp-action="issuedbook">
+                        <span class=" d-flex align-content-center justify-content-between align-items-center">
+                <p class=" h-100 p-0 m-0 fs-1 fw-bold"><i class="fa-solid z fa-book"></i>@ViewBag.Issuecount</p>
+                            <div class=" mx-2 iic rounded-circle h-100" style=" width: 15vmin;">
+                                <img src="~/webImages/book.png"/>
+                            </div>
+
+                        </span>
+                        <span class="w-100  mt-3 p-0 d-flex align-items-end justify-content-center">
+                            <p class="w-100 m-0 text-start">Issued Books</p>
+                        </span>
+                        </a>
+                    </div>
+
+
+                    <div class="d-flex flex-column bg-white p-3 rounded-4 shadow-lg border-1 border-secondary box" style="width: 42vmin;">
+                        <a asp-action="TotalAddBook">
+                        <span class=" d-flex align-content-center justify-content-between align-items-center">
+                             <p class=" h-100 p-0 m-0 fs-1 fw-bold"><i class="fa-solid z fa-book-journal-whills"></i>@ViewBag.Totalbook</p>
+                            <div class=" mx-2 iic rounded-circle " style=" width: 15vmin; ">
+                                <img src="~/webImages/book-1.png"/>
+                            </div>
+
+                        </span>
+                        <span class="w-100 mt-3 p-0 d-flex align-items-end justify-content-center">
+                            <p class="w-100  m-0 text-start">Total Books</p>
+                        </span>
+                        </a>
+                    </div>
+                    @* <div class="d-flex flex-column bg-white p-3 rounded-4 shadow-lg border-1  border-secondary box" style="width: 42vmin;">
+                        <a asp-action="Totalrevenue">
+                        <span class=" d-flex align-content-center justify-content-between align-items-center">
+                            <p class=" h-100 p-0 m-0 fs-1 fw-bold"><i class="fa-solid z fa-indian-rupee"></i>0</p>
+                            <div class=" mx-2 iic rounded-circle " style=" width: 15vmin;" \">
+                                <img src="~/webImages/money.png"/>
+                            </div>
+
+                        </span>
+                        <span class="w-100 mt-3 p-0 d-flex align-items-end justify-content-center">
+                            <p class="w-100  m-0 text-start">Total Revenue</p>
+                        </span>
+                        </a>
+                    </div> *@
+                    <div class="d-flex flex-column p-3 bg-white rounded-4 shadow-lg border-1 border-secondary box" style="width: 42vmin;">
+        <a method="post" asp-action="OverDueData">
+                        <span class=" d-flex align-content-center justify-content-between align-items-center">
+                            <p class=" h-100 p-0 m-0 fs-1 fw-bold"><i class="fa-solid z fa-hourglass-end"></i>0</p>
+                            <div class=" mx-2 iic rounded-circle" style="width: 15vmin;">
+                                
+                                    <img style="width: 15vmin;"
+                                         src="~/webImages/overdue.jpg"/>
+                               
+                            </div>
+
+                        </span>
+                        <span class="w-100  mt-3 p-0 d-flex align-items-end justify-content-center">
+                            <p class="w-100 m-0 text-start">Overdue Books</p>
+                        </span>
+                        </a>
+                    </div>
+
+
+
+                </div>
+                <!-- boxes close -->
+                <!-- mid box open -->
+                <div class="w-100 mb-5 px-4 d-flex gap-5 justify-content-evenly flex-wrap">
+                    <div class=" p-3 p-0 m-0 bg-info rounded-4 bg-white border-1 border-secondary overflow-hidden shadow-md shadow-gray-700 d-flex flex-column w-100 pb-3" style="height:20.65rem; background-color: rgb(76, 76, 83);">
+                         <div class="d-flex w-100 align-items-center justify-content-between">
+                            <h1 class="fs-4"><i class="fa-solid fa-file"></i>Books List</h1><a asp-action="TotalAddBook" class="btn btn-warning fw-bold">View All</a>
+                        </div>
+                        <div class="w-100 tabl ">
+                            <table class="bordered my-2 w-100">
+                                <tr class="bg-danger text-black bg-opacity-25" style="border: 2px solid rgb(111, 108, 108);">
+                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Sr. No.</th>
+                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Book ID</th>
+                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Title</th>
+                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Author</th>
+                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Number of Copy</th>
+                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Available</th>
+                                </tr>
+                                
+                                @foreach (System.Data.DataRow row in Model.Books.Rows)
+                                {
+                                    <tr class="hover:bg-red-200" style=" border: 2px solid rgb(111, 108, 108);">
+                                        <td class="text-center py-2">@row["id"]</td>
+                                        <td class="text-center">@row["bookID"]</td>
+                                        <td class="text-center">@row["title"]</td>
+                                        <td class="text-center">@row["author"]</td>
+                                        <td class="text-center">@row["copies"]</td>
+                                        <td class="text-center">@row["available"]</td>
+                                   </tr> 
+                                }
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap justify-content-center">
+                    <div class=" px-4 d-flex gap-5 justify-content-evenly flex-wrap mb-5" style="width: 92vmin;">
+                    <div class=" p-3 p-0 m-0 rounded-4 d-flex border-1 flex-column shadow-md overflow-hidden  shadow-gray-700 border-secondary bg-white  w-100" style="height:20.65rem;">
+                            <div class="d-flex w-100 align-items-center justify-content-between">
+                <h1 class="fs-4"><i class="fa-solid fa-file"></i>Issued</h1><a asp-action="issuedbook" class="btn btn-warning fw-bold fs-6">View All</a>
+                            </div>
+                            <div class="w-100  tabl">
+                                <table class="bordered my-2 w-100">
+                                    <tr class="bg-danger text-black bg-opacity-25" style="border: 2px solid rgb(111, 108, 108);">
+                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Borrower Name</th>
+                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Book Name</th>
+                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Issue Date</th>
+                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Return Date</th>
+                                        <!-- <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Details</th> -->
+                                    </tr>
+
+                        @foreach(System.Data.DataRow row1 in  Model.issuedbooks.Rows){
+                                    <tr class="book-list" style="border: 2px solid rgb(111, 108, 108);">
+
+                                        <td class="text-center px-1 py-2">@row1["stuname"]</td>
+                                        <td class="text-center px-1 py-2">@row1["bookname"]</td>
+                                        <td class="text-center px-1 py-2">@row1["issuedate"]</td>
+                                       <td class="text-center px-1 py-2">@row1["duedate"]</td>
+                                        <!-- <td class="text-center p-0"><a href="#" class="text-decoration-none fw-bold text-danger w-100 rounded-0 h-100 m-0">View Details</a></td> -->
+                                    </tr>
+                                    }
+                                   
+                                </table>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <div class="px-4 d-flex gap-5 justify-content-evenly flex-wrap mb-5" style="width: 92vmin;">
+                        <div class=" p-3 p-0 m-0  rounded-4 d-flex flex-wrap flex-column  shadow-md shadow-gray-700 border-secondary bg-white  border-1 w-100" style=" background-color: rgb(76, 76, 83);">
+                            <div class="d-flex w-100 align-items-center justify-content-between">
+                                <h1 class="fs-4"><i class="fa-solid fa-hourglass-end"></i>Overdue</h1><a href="./overdue-book.html" class="btn btn-warning fw-bold fs-6">View All</a>
+                            </div>
+                            <div class="w-100 tabl">
+
+
+                                <table class="bordered  my-2 w-100">
+                                    <tr class="bg-danger text-black bg-opacity-25" style="border: 2px solid rgb(111, 108, 108);">
+                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Borrower Name</th>
+                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Book Name</th>
+                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Issue Date</th>
+                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Return Date</th>
+                                        <!-- <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Overdue Days</th> -->
+                                    </tr>
+                                   
+                                  
+                                    
+
+                                </table>
+                            </div> 
+
+                        </div>
+
+                    </div>
+
+                </div>
+               
+                <!-- mid box close -->
+          
+      
