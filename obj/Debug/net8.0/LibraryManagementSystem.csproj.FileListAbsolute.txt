@@ -25,7 +25,6 @@ C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\obj\
 C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\net8.0\LibraryManagementSystem.dll
 C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\net8.0\refint\LibraryManagementSystem.dll
 C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\net8.0\LibraryManagementSystem.pdb
@@ -86,3 +85,5 @@ C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\bin\
 C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
 C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\net8.0\swae.build.ex.cache
+C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\net8.0\LibraryManagementSystem.sourcelink.json
+C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\bin\Debug\net8.0\dotnet-tools.json

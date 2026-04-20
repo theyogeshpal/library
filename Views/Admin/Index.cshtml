@@ -1,180 +1,228 @@
-﻿@model LibraryManagementSystem.Models.DashboardModel
+@model LibraryManagementSystem.Models.DashboardModel
 
 @{
-    Layout = "_Layout";
+    Layout = "_AdminLayout";
 }
 
+<div class="mb-8 flex justify-between items-center">
+    <div>
+        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Overview</h1>
+        <p class="text-slate-500 font-medium pt-1">Welcome back! Here's what's happening with the library today.</p>
+    </div>
+    <div class="text-sm text-slate-400 font-semibold">
+        <i class="fas fa-calendar-alt me-2"></i>@DateTime.Now.ToString("dddd, dd MMMM yyyy")
+    </div>
+</div>
 
-                <div>
-
-                    <h1 class="fw-bold fs-1">Hello, <span class="text-success">Yogesh!</span></h1>
-                    <p class="fw-bold">September 5, 2025 | Friday, 21:37 PM</p>
+<!-- Stats Grid -->
+<div class="row g-4 mb-10">
+    <div class="col-xl-3 col-md-6">
+        <div class="stat-card group">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                    <i class="fas fa-book"></i>
                 </div>
+                <div class="text-xs font-bold text-indigo-500 bg-indigo-50 px-2 py-1 rounded-lg">Live</div>
+            </div>
+            <div class="text-3xl font-black text-slate-900 mb-1">@ViewBag.Issuecount</div>
+            <div class="text-slate-500 text-sm font-semibold uppercase tracking-wider">Books Issued</div>
+        </div>
+    </div>
 
-                <!-- boxes open -->
-                <div class="boxes d-flex justify-content-evenly row-gap-5 flex-wrap my-5">
-
-                    <div class="d-flex flex-column p-3  rounded-4 shadow-lg border-1 border-secondary box " style="width: 42vmin;background-color: rgb(255, 255, 255);">
-                        <a asp-action="issuedbook">
-                        <span class=" d-flex align-content-center justify-content-between align-items-center">
-                <p class=" h-100 p-0 m-0 fs-1 fw-bold"><i class="fa-solid z fa-book"></i>@ViewBag.Issuecount</p>
-                            <div class=" mx-2 iic rounded-circle h-100" style=" width: 15vmin;">
-                                <img src="~/webImages/book.png"/>
-                            </div>
-
-                        </span>
-                        <span class="w-100  mt-3 p-0 d-flex align-items-end justify-content-center">
-                            <p class="w-100 m-0 text-start">Issued Books</p>
-                        </span>
-                        </a>
-                    </div>
-
-
-                    <div class="d-flex flex-column bg-white p-3 rounded-4 shadow-lg border-1 border-secondary box" style="width: 42vmin;">
-                        <a asp-action="TotalAddBook">
-                        <span class=" d-flex align-content-center justify-content-between align-items-center">
-                             <p class=" h-100 p-0 m-0 fs-1 fw-bold"><i class="fa-solid z fa-book-journal-whills"></i>@ViewBag.Totalbook</p>
-                            <div class=" mx-2 iic rounded-circle " style=" width: 15vmin; ">
-                                <img src="~/webImages/book-1.png"/>
-                            </div>
-
-                        </span>
-                        <span class="w-100 mt-3 p-0 d-flex align-items-end justify-content-center">
-                            <p class="w-100  m-0 text-start">Total Books</p>
-                        </span>
-                        </a>
-                    </div>
-                    @* <div class="d-flex flex-column bg-white p-3 rounded-4 shadow-lg border-1  border-secondary box" style="width: 42vmin;">
-                        <a asp-action="Totalrevenue">
-                        <span class=" d-flex align-content-center justify-content-between align-items-center">
-                            <p class=" h-100 p-0 m-0 fs-1 fw-bold"><i class="fa-solid z fa-indian-rupee"></i>0</p>
-                            <div class=" mx-2 iic rounded-circle " style=" width: 15vmin;" \">
-                                <img src="~/webImages/money.png"/>
-                            </div>
-
-                        </span>
-                        <span class="w-100 mt-3 p-0 d-flex align-items-end justify-content-center">
-                            <p class="w-100  m-0 text-start">Total Revenue</p>
-                        </span>
-                        </a>
-                    </div> *@
-                    <div class="d-flex flex-column p-3 bg-white rounded-4 shadow-lg border-1 border-secondary box" style="width: 42vmin;">
-        <a method="post" asp-action="OverDueData">
-                        <span class=" d-flex align-content-center justify-content-between align-items-center">
-                            <p class=" h-100 p-0 m-0 fs-1 fw-bold"><i class="fa-solid z fa-hourglass-end"></i>0</p>
-                            <div class=" mx-2 iic rounded-circle" style="width: 15vmin;">
-                                
-                                    <img style="width: 15vmin;"
-                                         src="~/webImages/overdue.jpg"/>
-                               
-                            </div>
-
-                        </span>
-                        <span class="w-100  mt-3 p-0 d-flex align-items-end justify-content-center">
-                            <p class="w-100 m-0 text-start">Overdue Books</p>
-                        </span>
-                        </a>
-                    </div>
-
-
-
+    <div class="col-xl-3 col-md-6">
+        <div class="stat-card group">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                    <i class="fas fa-layer-group"></i>
                 </div>
-                <!-- boxes close -->
-                <!-- mid box open -->
-                <div class="w-100 mb-5 px-4 d-flex gap-5 justify-content-evenly flex-wrap">
-                    <div class=" p-3 p-0 m-0 bg-info rounded-4 bg-white border-1 border-secondary overflow-hidden shadow-md shadow-gray-700 d-flex flex-column w-100 pb-3" style="height:20.65rem; background-color: rgb(76, 76, 83);">
-                         <div class="d-flex w-100 align-items-center justify-content-between">
-                            <h1 class="fs-4"><i class="fa-solid fa-file"></i>Books List</h1><a asp-action="TotalAddBook" class="btn btn-warning fw-bold">View All</a>
-                        </div>
-                        <div class="w-100 tabl ">
-                            <table class="bordered my-2 w-100">
-                                <tr class="bg-danger text-black bg-opacity-25" style="border: 2px solid rgb(111, 108, 108);">
-                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Sr. No.</th>
-                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Book ID</th>
-                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Title</th>
-                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Author</th>
-                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Number of Copy</th>
-                                    <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Available</th>
+                <div class="text-xs font-bold text-emerald-500 bg-emerald-50 px-2 py-1 rounded-lg">Total</div>
+            </div>
+            <div class="text-3xl font-black text-slate-900 mb-1">@ViewBag.Totalbook</div>
+            <div class="text-slate-500 text-sm font-semibold uppercase tracking-wider">Total Collection</div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="stat-card group">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-red-50 text-red-500 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                @if (Convert.ToInt32(ViewBag.OverdueCount) > 0)
+                {
+                    <div class="text-xs font-bold text-red-500 bg-red-50 px-2 py-1 rounded-lg">Action Needed</div>
+                }
+                else
+                {
+                    <div class="text-xs font-bold text-green-500 bg-green-50 px-2 py-1 rounded-lg">All Clear</div>
+                }
+            </div>
+            <div class="text-3xl font-black text-slate-900 mb-1">@ViewBag.OverdueCount</div>
+            <div class="text-slate-500 text-sm font-semibold uppercase tracking-wider">Overdue Items</div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-md-6">
+        <div class="stat-card group">
+            <div class="flex justify-between items-start mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="text-xs font-bold text-purple-500 bg-purple-50 px-2 py-1 rounded-lg">Staff</div>
+            </div>
+            <div class="text-3xl font-black text-slate-900 mb-1">@ViewBag.TotalMembers</div>
+            <div class="text-slate-500 text-sm font-semibold uppercase tracking-wider">Librarians</div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Books Table -->
+<div class="premium-table-card mb-8">
+    <div class="flex justify-between items-center mb-6">
+        <div>
+            <h2 class="text-xl font-bold text-slate-900">Recent Books</h2>
+            <p class="text-sm text-slate-500">Latest books in the library collection.</p>
+        </div>
+        <a asp-action="TotalAddBook" class="px-4 py-2 border border-slate-200 rounded-xl text-slate-600 font-bold hover:bg-slate-50 transition-colors no-underline text-sm">
+            Manage All <i class="fas fa-arrow-right ms-1"></i>
+        </a>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="bg-slate-50">
+                <tr>
+                    <th class="px-4 py-3 border-0 text-slate-500 text-xs font-bold uppercase tracking-wider">Sr.</th>
+                    <th class="px-4 py-3 border-0 text-slate-500 text-xs font-bold uppercase tracking-wider">Book ID</th>
+                    <th class="px-4 py-3 border-0 text-slate-500 text-xs font-bold uppercase tracking-wider">Title & Author</th>
+                    <th class="px-4 py-3 border-0 text-slate-500 text-xs font-bold uppercase tracking-wider text-center">Copies</th>
+                    <th class="px-4 py-3 border-0 text-slate-500 text-xs font-bold uppercase tracking-wider text-center">Available</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (System.Data.DataRow row in Model.Books.Rows)
+                {
+                    <tr>
+                        <td class="px-4 py-3 font-semibold text-slate-600">@row["id"]</td>
+                        <td class="px-4 py-3"><span class="bg-slate-100 text-slate-700 font-mono text-xs px-2 py-1 rounded">@row["bookID"]</span></td>
+                        <td class="px-4 py-3">
+                            <div class="font-bold text-slate-900">@row["title"]</div>
+                            <div class="text-xs text-slate-500">by @row["author"]</div>
+                        </td>
+                        <td class="px-4 py-3 text-center font-medium">@row["copies"]</td>
+                        <td class="px-4 py-3 text-center">
+                            @if (Convert.ToInt32(row["available"]) > 0)
+                            {
+                                <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full font-bold">@row["available"] In Stock</span>
+                            }
+                            else
+                            {
+                                <span class="bg-red-100 text-red-700 text-xs px-2 py-1 rounded-full font-bold">Out of Stock</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Recent Issues -->
+    <div class="col-lg-6">
+        <div class="premium-table-card">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-bold text-slate-900">Recent Issues</h3>
+                <a asp-action="issuedbook" class="text-indigo-600 text-sm font-bold no-underline">See All <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+            @if (Model.issuedbooks.Rows.Count == 0)
+            {
+                <div class="text-center py-10 text-slate-400">
+                    <i class="fas fa-book-open text-4xl mb-3"></i>
+                    <p class="font-semibold">No books issued yet</p>
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-borderless table-sm align-middle">
+                        <thead class="bg-slate-50/50">
+                            <tr>
+                                <th class="text-xs font-bold text-slate-400 uppercase tracking-widest px-0">Borrower</th>
+                                <th class="text-xs font-bold text-slate-400 uppercase tracking-widest">Book</th>
+                                <th class="text-xs font-bold text-slate-400 uppercase tracking-widest text-end">Due Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (System.Data.DataRow row1 in Model.issuedbooks.Rows)
+                            {
+                                <tr>
+                                    <td class="py-3 px-0">
+                                        <div class="font-bold text-sm">@row1["stuname"]</div>
+                                        <div class="text-[10px] text-slate-400">@row1["stumobile"]</div>
+                                    </td>
+                                    <td class="py-3">
+                                        <div class="text-sm truncate max-w-[150px]">@row1["bookname"]</div>
+                                    </td>
+                                    <td class="py-3 text-end">
+                                        <span class="text-xs font-bold text-slate-500">@row1["duedate"]</span>
+                                    </td>
                                 </tr>
-                                
-                                @foreach (System.Data.DataRow row in Model.Books.Rows)
-                                {
-                                    <tr class="hover:bg-red-200" style=" border: 2px solid rgb(111, 108, 108);">
-                                        <td class="text-center py-2">@row["id"]</td>
-                                        <td class="text-center">@row["bookID"]</td>
-                                        <td class="text-center">@row["title"]</td>
-                                        <td class="text-center">@row["author"]</td>
-                                        <td class="text-center">@row["copies"]</td>
-                                        <td class="text-center">@row["available"]</td>
-                                   </tr> 
-                                }
-                            </table>
-                        </div>
-                    </div>
+                            }
+                        </tbody>
+                    </table>
                 </div>
-                <div class="d-flex flex-wrap justify-content-center">
-                    <div class=" px-4 d-flex gap-5 justify-content-evenly flex-wrap mb-5" style="width: 92vmin;">
-                    <div class=" p-3 p-0 m-0 rounded-4 d-flex border-1 flex-column shadow-md overflow-hidden  shadow-gray-700 border-secondary bg-white  w-100" style="height:20.65rem;">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                <h1 class="fs-4"><i class="fa-solid fa-file"></i>Issued</h1><a asp-action="issuedbook" class="btn btn-warning fw-bold fs-6">View All</a>
-                            </div>
-                            <div class="w-100  tabl">
-                                <table class="bordered my-2 w-100">
-                                    <tr class="bg-danger text-black bg-opacity-25" style="border: 2px solid rgb(111, 108, 108);">
-                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Borrower Name</th>
-                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Book Name</th>
-                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Issue Date</th>
-                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Return Date</th>
-                                        <!-- <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Details</th> -->
-                                    </tr>
+            }
+        </div>
+    </div>
 
-                        @foreach(System.Data.DataRow row1 in  Model.issuedbooks.Rows){
-                                    <tr class="book-list" style="border: 2px solid rgb(111, 108, 108);">
-
-                                        <td class="text-center px-1 py-2">@row1["stuname"]</td>
-                                        <td class="text-center px-1 py-2">@row1["bookname"]</td>
-                                        <td class="text-center px-1 py-2">@row1["issuedate"]</td>
-                                       <td class="text-center px-1 py-2">@row1["duedate"]</td>
-                                        <!-- <td class="text-center p-0"><a href="#" class="text-decoration-none fw-bold text-danger w-100 rounded-0 h-100 m-0">View Details</a></td> -->
-                                    </tr>
-                                    }
-                                   
-                                </table>
-                            </div>
-
-
-                        </div>
-
+    <!-- Overdue Section -->
+    <div class="col-lg-6">
+        <div class="premium-table-card h-100">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-bold text-slate-900">Overdue Books</h3>
+                <a asp-action="OverDueData" class="text-red-500 text-sm font-bold no-underline">Full Report <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+            @if (Model.OverdueBooks == null || Model.OverdueBooks.Rows.Count == 0)
+            {
+                <div class="flex flex-col items-center justify-center text-center py-10">
+                    <div class="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center text-green-500 text-2xl mb-4">
+                        <i class="fas fa-check-double"></i>
                     </div>
-                    <div class="px-4 d-flex gap-5 justify-content-evenly flex-wrap mb-5" style="width: 92vmin;">
-                        <div class=" p-3 p-0 m-0  rounded-4 d-flex flex-wrap flex-column  shadow-md shadow-gray-700 border-secondary bg-white  border-1 w-100" style=" background-color: rgb(76, 76, 83);">
-                            <div class="d-flex w-100 align-items-center justify-content-between">
-                                <h1 class="fs-4"><i class="fa-solid fa-hourglass-end"></i>Overdue</h1><a href="./overdue-book.html" class="btn btn-warning fw-bold fs-6">View All</a>
-                            </div>
-                            <div class="w-100 tabl">
-
-
-                                <table class="bordered  my-2 w-100">
-                                    <tr class="bg-danger text-black bg-opacity-25" style="border: 2px solid rgb(111, 108, 108);">
-                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Borrower Name</th>
-                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Book Name</th>
-                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Issue Date</th>
-                                        <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Return Date</th>
-                                        <!-- <th class="text-center p-2" style="border: 2px solid rgb(111, 108, 108);">Overdue Days</th> -->
-                                    </tr>
-                                   
-                                  
-                                    
-
-                                </table>
-                            </div> 
-
-                        </div>
-
-                    </div>
-
+                    <h4 class="font-bold text-slate-900 mb-1">No Overdue Items</h4>
+                    <p class="text-sm text-slate-500">All books are within their due dates.</p>
                 </div>
-               
-                <!-- mid box close -->
-          
-      
+            }
+            else
+            {
+                <div class="table-responsive">
+                    <table class="table table-borderless table-sm align-middle">
+                        <thead class="bg-slate-50/50">
+                            <tr>
+                                <th class="text-xs font-bold text-slate-400 uppercase tracking-widest px-0">Borrower</th>
+                                <th class="text-xs font-bold text-slate-400 uppercase tracking-widest">Book</th>
+                                <th class="text-xs font-bold text-slate-400 uppercase tracking-widest text-end">Due</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (System.Data.DataRow row2 in Model.OverdueBooks.Rows)
+                            {
+                                <tr>
+                                    <td class="py-3 px-0">
+                                        <div class="font-bold text-sm text-red-600">@row2["stuname"]</div>
+                                        <div class="text-[10px] text-slate-400">@row2["stumobile"]</div>
+                                    </td>
+                                    <td class="py-3">
+                                        <div class="text-sm truncate max-w-[130px]">@row2["bookname"]</div>
+                                    </td>
+                                    <td class="py-3 text-end">
+                                        <span class="text-xs font-bold text-red-500 bg-red-50 px-2 py-1 rounded-full">@row2["duedate"]</span>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</div>

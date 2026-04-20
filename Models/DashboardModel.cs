@@ -5,8 +5,8 @@ namespace LibraryManagementSystem.Models
     public class DashboardModel
     {
         public DataTable Books { get; set; }
-
         public DataTable issuedbooks { get; set; }
-
+        public DataTable OverdueBooks { get; set; }
+        public int TotalMembers { get; set; }
     }
 }

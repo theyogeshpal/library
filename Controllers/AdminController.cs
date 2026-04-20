@@ -30,23 +30,23 @@ namespace LibraryManagementSystem.Controllers
             DashboardModel dashboard = new DashboardModel();
 
             string cmd1 = "select * from Books";
-            DataTable dt1 = new DataTable();
-            dt1 = connection.Executeselect(cmd1);
+            DataTable dt1 = connection.Executeselect(cmd1);
             dashboard.Books = dt1;
-            
-            string totalbook = dt1.Rows.Count.ToString();
-            ViewBag.Totalbook = totalbook;
+            ViewBag.Totalbook = dt1.Rows.Count.ToString();
 
-
-
-            //issue page view bag code start
             string cmd2 = "select * from issuedbooks";
             DataTable dt2 = connection.Executeselect(cmd2);
             dashboard.issuedbooks = dt2;
-            string issuecount = dt2.Rows.Count.ToString();
-            ViewBag.Issuecount = issuecount;
+            ViewBag.Issuecount = dt2.Rows.Count.ToString();
 
-            //issue page view bag code end
+            string cmd3 = "select * from overduebooks";
+            DataTable dt3 = connection.Executeselect(cmd3);
+            dashboard.OverdueBooks = dt3;
+            ViewBag.OverdueCount = dt3.Rows.Count.ToString();
+
+            string cmd4 = "select count(*) from librarian";
+            DataTable dt4 = connection.Executeselect(cmd4);
+            ViewBag.TotalMembers = dt4.Rows[0][0].ToString();
 
             return View(dashboard);
         }
@@ -108,6 +108,36 @@ namespace LibraryManagementSystem.Controllers
                 TempData["bookadd"] = "Can't Delete Please Retry";
                 return RedirectToAction("TotalAddBook");
             }
+        }
+
+        [HttpPost]
+        public IActionResult EditBook(IFormCollection form)
+        {
+            string id = form["editid"];
+            string bookname = form["editbookname"];
+            string author = form["editauthor"];
+            string copies = form["editcopy"];
+            string available = form["editavailable"];
+
+            string cmd = "update Books set title='" + bookname + "', author='" + author + "', copies='" + copies + "', available='" + available + "' where id='" + id + "'";
+            if (connection.ExecuteIUD(cmd))
+            {
+                TempData["bookadd"] = "Book Updated Successfully";
+            }
+            else
+            {
+                TempData["bookadd"] = "Error updating book. Please retry.";
+            }
+            return RedirectToAction("TotalAddBook");
+        }
+
+        public IActionResult SearchBooks(string query)
+        {
+            string cmd = "select * from Books where title like '%" + query + "%' or author like '%" + query + "%' or bookID like '%" + query + "%'";
+            DataTable dt = connection.Executeselect(cmd);
+            ViewBag.SearchQuery = query;
+            TempData["bookadd"] = $"Found {dt.Rows.Count} result(s) for '{query}'";
+            return View("TotalAddBook", dt);
         }
 
         public IActionResult issuedbook()
