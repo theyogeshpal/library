@@ -4,13 +4,13 @@
     Layout = "_AdminLayout";
 }
 
-<div class="mb-8 flex justify-between items-center">
+<div class="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
     <div>
-        <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Overview</h1>
-        <p class="text-slate-500 font-medium pt-1">Welcome back! Here's what's happening with the library today.</p>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Overview</h1>
+        <p class="text-slate-500 font-medium pt-1 text-sm">Welcome back! Here's what's happening today.</p>
     </div>
-    <div class="text-sm text-slate-400 font-semibold">
-        <i class="fas fa-calendar-alt me-2"></i>@DateTime.Now.ToString("dddd, dd MMMM yyyy")
+    <div class="text-xs text-slate-400 font-semibold">
+        <i class="fas fa-calendar-alt me-2"></i>@DateTime.Now.ToString("ddd, dd MMM yyyy")
     </div>
 </div>
 

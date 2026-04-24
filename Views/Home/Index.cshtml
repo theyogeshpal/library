@@ -2,53 +2,52 @@
     Layout = "_WebLayout";
 }
 
-<!-- Hero Section -->
 <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden bg-slate-50">
     <div class="absolute inset-0 z-0">
-        <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-indigo-100 rounded-full blur-3xl opacity-50"></div>
-        <div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-purple-100 rounded-full blur-3xl opacity-50"></div>
+        <div class="absolute top-[-10%] right-[-10%] w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-indigo-100 rounded-full blur-3xl opacity-50"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[250px] h-[250px] sm:w-[400px] sm:h-[400px] bg-purple-100 rounded-full blur-3xl opacity-50"></div>
     </div>
-    <div class="container relative z-10">
+    <div class="container relative z-10 py-12">
         <div class="row items-center g-5">
-            <div class="col-lg-7 space-y-8">
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 border border-indigo-100 rounded-full text-indigo-600 font-bold mb-4 animate__animated animate__fadeIn">
+            <div class="col-lg-7">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 border border-indigo-100 rounded-full text-indigo-600 font-bold mb-4 animate__animated animate__fadeIn text-sm">
                     <span class="relative flex h-3 w-3">
                         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                         <span class="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
                     </span>
                     Digital Library Revolutionized
                 </div>
-                <h1 class="display-2 fw-black tracking-tight text-slate-900 animate__animated animate__fadeInUp">
+                <h1 class="display-4 fw-black tracking-tight text-slate-900 animate__animated animate__fadeInUp">
                     Unlock the World of <span class="bg-indigo-600 text-white px-3 py-1 rounded-2xl">Knowledge</span>
                 </h1>
-                <p class="text-xl text-slate-600 max-w-2xl leading-relaxed animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                <p class="text-lg text-slate-600 max-w-2xl leading-relaxed animate__animated animate__fadeInUp mt-4" style="animation-delay: 0.2s;">
                     RiskFlight is more than just a library; it's a premium academic hub designed for the next generation of thinkers, innovators, and lifelong learners.
                 </p>
-                <div class="flex items-center gap-4 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                <div class="d-flex flex-wrap gap-3 mt-4 animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
                     <a href="#services" class="btn-premium no-underline">Start Exploring</a>
                     <a href="/Home/About" class="btn-outline-premium no-underline">Our Vision</a>
                 </div>
-                <div class="pt-8 grid grid-cols-3 gap-8 animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
-                    <div>
-                        <div class="text-3xl font-black text-slate-900">50K+</div>
-                        <div class="text-slate-500 font-medium">Books</div>
+                <div class="row g-3 mt-4 animate__animated animate__fadeInUp" style="animation-delay: 0.6s;">
+                    <div class="col-4">
+                        <div class="text-2xl font-black text-slate-900">50K+</div>
+                        <div class="text-slate-500 font-medium text-sm">Books</div>
                     </div>
-                    <div>
-                        <div class="text-3xl font-black text-slate-900">12K+</div>
-                        <div class="text-slate-500 font-medium">Members</div>
+                    <div class="col-4">
+                        <div class="text-2xl font-black text-slate-900">12K+</div>
+                        <div class="text-slate-500 font-medium text-sm">Members</div>
                     </div>
-                    <div>
-                        <div class="text-3xl font-black text-slate-900">100+</div>
-                        <div class="text-slate-500 font-medium">Daily Issues</div>
+                    <div class="col-4">
+                        <div class="text-2xl font-black text-slate-900">100+</div>
+                        <div class="text-slate-500 font-medium text-sm">Daily Issues</div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5 animate__animated animate__fadeInRight">
+            <div class="col-lg-5 d-none d-lg-block animate__animated animate__fadeInRight">
                 <div class="relative">
                     <div class="absolute -inset-4 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-3xl blur-2xl opacity-20 animate-pulse"></div>
                     <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
                          alt="Library Hero"
-                         class="relative rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-500">
+                         class="relative rounded-3xl shadow-2xl w-100">
                 </div>
             </div>
         </div>
@@ -56,12 +55,12 @@
 </section>
 
 <!-- Services Section -->
-<section id="services" class="py-32 bg-white">
+<section id="services" class="py-16 py-lg-32 bg-white">
     <div class="container">
-        <div class="max-w-3xl mb-20">
-            <h2 class="text-indigo-600 font-bold tracking-widest uppercase mb-4">Core Experience</h2>
-            <h3 class="text-5xl font-black text-slate-900 mb-6">Designed for Excellence</h3>
-            <p class="text-xl text-slate-500">We offer a range of services designed to provide the most efficient and enjoyable library experience possible.</p>
+        <div class="max-w-3xl mb-12 mb-lg-20">
+            <h2 class="text-indigo-600 font-bold tracking-widest uppercase mb-3 text-sm">Core Experience</h2>
+            <h3 class="text-3xl text-lg-5xl font-black text-slate-900 mb-4">Designed for Excellence</h3>
+            <p class="text-lg text-slate-500">We offer a range of services designed to provide the most efficient and enjoyable library experience possible.</p>
         </div>
         <div class="row g-4">
             <div class="col-lg-4">
@@ -96,19 +95,19 @@
 </section>
 
 <!-- Featured Books -->
-<section id="featured" class="py-32 bg-slate-900 text-white">
+<section id="featured" class="py-16 py-lg-32 bg-slate-900 text-white">
     <div class="container">
-        <div class="flex justify-between items-end mb-16">
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-end mb-10 gap-3">
             <div>
-                <h2 class="text-indigo-400 font-bold mb-4">Curated Collection</h2>
-                <h3 class="text-5xl font-black">Featured This Month</h3>
+                <h2 class="text-indigo-400 font-bold mb-2 text-sm">Curated Collection</h2>
+                <h3 class="text-3xl font-black">Featured This Month</h3>
             </div>
-            <a href="#" class="text-indigo-400 font-bold no-underline hover:text-white flex items-center gap-2">
+            <a href="#" class="text-indigo-400 font-bold no-underline hover:text-white d-flex align-items-center gap-2 text-sm">
                 View All <i class="fas fa-arrow-right"></i>
             </a>
         </div>
-        <div class="row g-5">
-            <div class="col-md-3">
+        <div class="row g-4">
+            <div class="col-6 col-md-3">
                 <div class="group cursor-pointer">
                     <div class="relative aspect-[3/4] mb-6 overflow-hidden rounded-2xl shadow-2xl">
                         <img src="https://images.unsplash.com/photo-1544640805-35c0fa000792?auto=format&fit=crop&q=80&w=400"
@@ -121,42 +120,42 @@
                     <p class="text-indigo-400 uppercase text-xs font-bold tracking-widest">Philosophy</p>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
                 <div class="group cursor-pointer">
-                    <div class="relative aspect-[3/4] mb-6 overflow-hidden rounded-2xl shadow-2xl">
+                    <div class="relative aspect-[3/4] mb-4 overflow-hidden rounded-2xl shadow-2xl">
                         <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&q=80&w=400"
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Book 2">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                            <button class="w-full py-3 bg-white text-black font-bold rounded-xl">Reserve Now</button>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                            <button class="w-full py-2 bg-white text-black font-bold rounded-xl text-sm">Reserve Now</button>
                         </div>
                     </div>
-                    <h4 class="text-xl font-bold mb-1">The Digital Frontier</h4>
+                    <h4 class="text-base font-bold mb-1">The Digital Frontier</h4>
                     <p class="text-indigo-400 uppercase text-xs font-bold tracking-widest">Technology</p>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
                 <div class="group cursor-pointer">
-                    <div class="relative aspect-[3/4] mb-6 overflow-hidden rounded-2xl shadow-2xl">
+                    <div class="relative aspect-[3/4] mb-4 overflow-hidden rounded-2xl shadow-2xl">
                         <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&q=80&w=400"
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Book 3">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                            <button class="w-full py-3 bg-white text-black font-bold rounded-xl">Reserve Now</button>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                            <button class="w-full py-2 bg-white text-black font-bold rounded-xl text-sm">Reserve Now</button>
                         </div>
                     </div>
-                    <h4 class="text-xl font-bold mb-1">Modern Psychology</h4>
+                    <h4 class="text-base font-bold mb-1">Modern Psychology</h4>
                     <p class="text-indigo-400 uppercase text-xs font-bold tracking-widest">Science</p>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
                 <div class="group cursor-pointer">
-                    <div class="relative aspect-[3/4] mb-6 overflow-hidden rounded-2xl shadow-2xl">
+                    <div class="relative aspect-[3/4] mb-4 overflow-hidden rounded-2xl shadow-2xl">
                         <img src="https://images.unsplash.com/photo-1497633762265-9a177c809852?auto=format&fit=crop&q=80&w=400"
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Book 4">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                            <button class="w-full py-3 bg-white text-black font-bold rounded-xl">Reserve Now</button>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                            <button class="w-full py-2 bg-white text-black font-bold rounded-xl text-sm">Reserve Now</button>
                         </div>
                     </div>
-                    <h4 class="text-xl font-bold mb-1">Wings of Imagination</h4>
+                    <h4 class="text-base font-bold mb-1">Wings of Imagination</h4>
                     <p class="text-indigo-400 uppercase text-xs font-bold tracking-widest">Literature</p>
                 </div>
             </div>
@@ -165,23 +164,23 @@
 </section>
 
 <!-- CTA -->
-<section class="py-32 bg-indigo-600">
-    <div class="container text-center text-white">
-        <h2 class="text-5xl font-black mb-8">Ready to start your journey?</h2>
-        <p class="text-2xl opacity-90 mb-12 max-w-2xl mx-auto">Join the RiskFlight community today and get access to our exclusive collection of books and resources.</p>
-        <div class="flex justify-center gap-4">
-            <a href="/Library/librarianLogin" class="px-8 py-4 bg-white text-indigo-600 font-bold rounded-2xl hover:scale-105 transition-transform no-underline">Get Started Now</a>
-            <a href="/Home/Contact" class="px-8 py-4 border-2 border-white/30 text-white font-bold rounded-2xl hover:bg-white/10 transition-colors no-underline">Contact Us</a>
+<section class="py-16 py-lg-32 bg-indigo-600">
+    <div class="container text-center text-white px-4">
+        <h2 class="text-3xl text-lg-5xl font-black mb-4">Ready to start your journey?</h2>
+        <p class="text-lg opacity-90 mb-8 max-w-2xl mx-auto">Join the RiskFlight community today and get access to our exclusive collection of books and resources.</p>
+        <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+            <a href="/Library/librarianLogin" class="px-6 py-3 bg-white text-indigo-600 font-bold rounded-2xl hover:scale-105 transition-transform no-underline">Get Started Now</a>
+            <a href="/Home/Contact" class="px-6 py-3 border-2 border-white/30 text-white font-bold rounded-2xl hover:bg-white/10 transition-colors no-underline">Contact Us</a>
         </div>
     </div>
 </section>
 
 <!-- Testimonials -->
-<section class="py-32 bg-white">
+<section class="py-16 py-lg-32 bg-white">
     <div class="container">
-        <div class="text-center mb-20">
-            <h2 class="text-indigo-600 font-bold tracking-widest uppercase mb-4">Student Voices</h2>
-            <h3 class="text-5xl font-black text-slate-900">What Our Members Say</h3>
+        <div class="text-center mb-12">
+            <h2 class="text-indigo-600 font-bold tracking-widest uppercase mb-3 text-sm">Student Voices</h2>
+            <h3 class="text-3xl font-black text-slate-900">What Our Members Say</h3>
         </div>
         <div class="row g-5">
             <div class="col-md-4">
@@ -234,13 +233,13 @@
 </section>
 
 <!-- FAQ -->
-<section class="py-32 bg-slate-50">
+<section class="py-16 py-lg-32 bg-slate-50">
     <div class="container">
         <div class="row g-5">
             <div class="col-lg-5">
-                <h2 class="text-indigo-600 font-bold tracking-widest uppercase mb-4">Got Questions?</h2>
-                <h3 class="text-5xl font-black text-slate-900 mb-6">Frequently Asked Questions</h3>
-                <p class="text-xl text-slate-600 mb-8">Can't find what you're looking for? Feel free to reach out to our support team.</p>
+                <h2 class="text-indigo-600 font-bold tracking-widest uppercase mb-3 text-sm">Got Questions?</h2>
+                <h3 class="text-3xl font-black text-slate-900 mb-4">Frequently Asked Questions</h3>
+                <p class="text-lg text-slate-600 mb-6">Can't find what you're looking for? Feel free to reach out to our support team.</p>
                 <a href="/Home/Contact" class="btn-premium no-underline">Contact Support</a>
             </div>
             <div class="col-lg-7">
