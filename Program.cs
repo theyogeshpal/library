@@ -31,4 +31,6 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Library}/{action=librarianLogin}/{id?}");
 
-app.Run();
+// CRITICAL: Force the app to listen on the port Render provides
+var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
+app.Run($"http://0.0.0.0:{port}");
