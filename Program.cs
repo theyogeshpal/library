@@ -17,7 +17,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAll",
         policy =>
         {
-            policy.WithOrigins("https://your-frontend-link.com") // Replace with your actual frontend URL
+            policy.WithOrigins("https://library-vijy.onrender.com") // Replace with your actual frontend URL
                   .AllowAnyMethod()
                   .AllowAnyHeader();
         });
@@ -29,6 +29,7 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
+    app.UseHsts();
 }
 app.UseStaticFiles();
 app.UseCors("AllowAll");
