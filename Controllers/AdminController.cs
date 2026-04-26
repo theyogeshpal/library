@@ -257,7 +257,7 @@ namespace LibraryManagementSystem.Controllers
         public IActionResult logoutAdmin()
         {
             HttpContext.Session.Remove("librarian");
-            return RedirectToAction("Index", "Library");
+            return RedirectToAction("librarianLogin", "Library");
         }
 
     }

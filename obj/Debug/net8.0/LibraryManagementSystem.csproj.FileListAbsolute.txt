@@ -87,3 +87,4 @@ C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\bin\
 C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\net8.0\swae.build.ex.cache
 C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\net8.0\LibraryManagementSystem.sourcelink.json
 C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\bin\Debug\net8.0\dotnet-tools.json
+C:\Users\palyo\source\repos\LibraryManagementSystem\LibraryManagementSystem\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
