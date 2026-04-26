@@ -1,15 +1,14 @@
-﻿using LibraryManagementSystem.Models;
+using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
-using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
 
 namespace LibraryManagementSystem.Controllers
 {
-    
     public class LibraryController : Controller
     {
-        DatabaseConnection connection;
-        
+        private readonly DatabaseConnection connection;
 
         public LibraryController(DatabaseConnection connection)
         {
@@ -27,14 +26,19 @@ namespace LibraryManagementSystem.Controllers
         }
 
         [HttpPost]
-        public IActionResult checkLogin(IFormCollection form)
+        public async Task<IActionResult> checkLogin(IFormCollection form)
         {
             string a = form["username"];
             string b = form["password"];
 
-            string cmd = "select * from librarian where username='" + a + "' and password='" + b + "'";
-            DataTable dt = new DataTable();
-            dt = connection.Executeselect(cmd);
+            string cmd = "select * from librarian where username=@user and password=@pass";
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@user", a),
+                new SqlParameter("@pass", b)
+            };
+
+            DataTable dt = await connection.ExecuteSelectAsync(cmd, parameters);
             if (dt.Rows.Count > 0)
             {
                 HttpContext.Session.SetString("librarian", a);
@@ -48,3 +52,4 @@ namespace LibraryManagementSystem.Controllers
         }
     }
 }
+

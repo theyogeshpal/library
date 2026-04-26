@@ -1,44 +1,118 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 using System.Data;
-using System.Data.SqlTypes;
 
 namespace LibraryManagementSystem.Models
 {
-    public class DatabaseConnection 
+    public class DatabaseConnection : IDisposable
     {
-        SqlConnection con;
+        private readonly SqlConnection _connection;
+        private bool _disposed = false;
 
         public DatabaseConnection(IConfiguration configuration)
         {
-            con = new SqlConnection(configuration.GetConnectionString("myconnection"));
-            con.Open();
+            _connection = new SqlConnection(configuration.GetConnectionString("myconnection"));
         }
 
+        private async Task EnsureConnectionOpenAsync()
+        {
+            if (_connection.State != ConnectionState.Open)
+            {
+                await _connection.OpenAsync();
+            }
+        }
+
+        public async Task<bool> ExecuteIUDAsync(string sql, params SqlParameter[] parameters)
+        {
+            await EnsureConnectionOpenAsync();
+            using (SqlCommand cmd = new SqlCommand(sql, _connection))
+            {
+                if (parameters != null)
+                {
+                    cmd.Parameters.AddRange(parameters);
+                }
+                
+                try
+                {
+                    int rows = await cmd.ExecuteNonQueryAsync();
+                    return rows > 0;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        public async Task<DataTable> ExecuteSelectAsync(string sql, params SqlParameter[] parameters)
+        {
+            await EnsureConnectionOpenAsync();
+            using (SqlCommand cmd = new SqlCommand(sql, _connection))
+            {
+                if (parameters != null)
+                {
+                    cmd.Parameters.AddRange(parameters);
+                }
+
+                using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    sda.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+        // Keep synchronous methods for compatibility but mark as obsolete or refactor later
         public bool ExecuteIUD(string sql)
         {
-            SqlCommand cmd = new SqlCommand(sql, con);
-            int row = 0;
-            try
+            if (_connection.State != ConnectionState.Open) _connection.Open();
+            using (SqlCommand cmd = new SqlCommand(sql, _connection))
             {
-                row = cmd.ExecuteNonQuery();
+                try
+                {
+                    int row = cmd.ExecuteNonQuery();
+                    return row > 0;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
-            catch (Exception ex)
-            {
-                row = 0;
-            }
-
-            return row > 0;
         }
 
         public DataTable Executeselect(string sql)
         {
-            SqlDataAdapter sda = new SqlDataAdapter(sql, con);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            return dt;
+            if (_connection.State != ConnectionState.Open) _connection.Open();
+            using (SqlDataAdapter sda = new SqlDataAdapter(sql, _connection))
+            {
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                return dt;
+            }
         }
 
-        
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    if (_connection != null)
+                    {
+                        if (_connection.State == ConnectionState.Open)
+                            _connection.Close();
+                        _connection.Dispose();
+                    }
+                }
+                _disposed = true;
+            }
+        }
     }
 }
+

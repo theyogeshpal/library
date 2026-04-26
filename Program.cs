@@ -4,6 +4,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+});
+
 
 builder.Services.AddScoped<DatabaseConnection>();
 
@@ -32,8 +37,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 app.UseStaticFiles();
+app.UseResponseCompression();
 app.UseCors("AllowAll");
 app.UseRouting();
+
 
 app.UseSession();
 

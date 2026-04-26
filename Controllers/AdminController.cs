@@ -1,7 +1,10 @@
-﻿using LibraryManagementSystem.Models;
+using LibraryManagementSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Data;
+using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
+
 
 namespace LibraryManagementSystem.Controllers
 {
@@ -25,39 +28,40 @@ namespace LibraryManagementSystem.Controllers
                 context.Result = RedirectToAction("index", ("Library"));
             }
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             DashboardModel dashboard = new DashboardModel();
 
             string cmd1 = "select * from Books";
-            DataTable dt1 = connection.Executeselect(cmd1);
+            DataTable dt1 = await connection.ExecuteSelectAsync(cmd1);
             dashboard.Books = dt1;
             ViewBag.Totalbook = dt1.Rows.Count.ToString();
 
             string cmd2 = "select * from issuedbooks";
-            DataTable dt2 = connection.Executeselect(cmd2);
+            DataTable dt2 = await connection.ExecuteSelectAsync(cmd2);
             dashboard.issuedbooks = dt2;
             ViewBag.Issuecount = dt2.Rows.Count.ToString();
 
             string cmd3 = "select * from overduebooks";
-            DataTable dt3 = connection.Executeselect(cmd3);
+            DataTable dt3 = await connection.ExecuteSelectAsync(cmd3);
             dashboard.OverdueBooks = dt3;
             ViewBag.OverdueCount = dt3.Rows.Count.ToString();
 
             string cmd4 = "select count(*) from librarian";
-            DataTable dt4 = connection.Executeselect(cmd4);
+            DataTable dt4 = await connection.ExecuteSelectAsync(cmd4);
             ViewBag.TotalMembers = dt4.Rows[0][0].ToString();
 
             return View(dashboard);
         }
 
-        public IActionResult TotalAddBook()
+
+        public async Task<IActionResult> TotalAddBook()
         {
             string cmd = "select * from Books";
-            DataTable dataTable = new DataTable();
-            dataTable = connection.Executeselect(cmd);
+            DataTable dataTable = await connection.ExecuteSelectAsync(cmd);
             return View(dataTable);
         }
+
 
         [HttpPost]
         public IActionResult Addbook(IFormCollection form)
@@ -131,22 +135,24 @@ namespace LibraryManagementSystem.Controllers
             return RedirectToAction("TotalAddBook");
         }
 
-        public IActionResult SearchBooks(string query)
+        public async Task<IActionResult> SearchBooks(string query)
         {
-            string cmd = "select * from Books where title like '%" + query + "%' or author like '%" + query + "%' or bookID like '%" + query + "%'";
-            DataTable dt = connection.Executeselect(cmd);
+            string cmd = "select * from Books where title like @query or author like @query or bookID like @query";
+            var param = new Microsoft.Data.SqlClient.SqlParameter("@query", $"%{query}%");
+            DataTable dt = await connection.ExecuteSelectAsync(cmd, param);
             ViewBag.SearchQuery = query;
             TempData["bookadd"] = $"Found {dt.Rows.Count} result(s) for '{query}'";
             return View("TotalAddBook", dt);
         }
 
-        public IActionResult issuedbook()
+
+        public async Task<IActionResult> issuedbook()
         {
             string cmd = "select * from issuedbooks";
-            DataTable dt = new DataTable();
-            dt = connection.Executeselect(cmd);
+            DataTable dt = await connection.ExecuteSelectAsync(cmd);
             return View(dt);
         }
+
 
         [HttpPost]
         public IActionResult issuebook(IFormCollection form)
@@ -247,12 +253,13 @@ namespace LibraryManagementSystem.Controllers
                  
             
         }
-        public IActionResult OverDueData()
+        public async Task<IActionResult> OverDueData()
         {
             string cmd = "select * from overduebooks";
-            DataTable dt = connection.Executeselect(cmd);
+            DataTable dt = await connection.ExecuteSelectAsync(cmd);
             return View(dt);
         }
+
 
         public IActionResult logoutAdmin()
         {
