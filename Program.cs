@@ -11,6 +11,17 @@ builder.Services.AddSession(options => {
     options.IdleTimeout = TimeSpan.FromMinutes(10);
 });
 
+// 1. Define the policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.WithOrigins("https://your-frontend-link.com") // Replace with your actual frontend URL
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+});
 
 var app = builder.Build();
 
@@ -20,7 +31,7 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
 }
 app.UseStaticFiles();
-
+app.UseCors("AllowAll");
 app.UseRouting();
 
 app.UseSession();
